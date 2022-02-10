@@ -1,0 +1,13 @@
+body {
+  background: rgb(230, 230, 230);
+}
+
+.btn {
+  border: solid 1px #222222;
+  background: transparent;
+  color: #222222;
+}
+.btn:hover {
+  color:rgb(230, 230, 230);
+  background: #222222;
+}

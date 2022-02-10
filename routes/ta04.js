@@ -1,14 +1,17 @@
 //TA04 PLACEHOLDER
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.render('pages/ta04', {
-    title: 'Team Activity 04',
-    path: '/ta04', // For pug, EJS
-    activeTA04: true, // For HBS
-    contentCSS: true, // For HBS
-  });
-});
+const controllerTA04 = require('../controllers/controllerTA04');
+
+router.get("/", controllerTA04.getIndex);
+
+router.post('/change-style', controllerTA04.changeStyle);
+
+router.post('/counter-inc', controllerTA04.incCounter);
+
+router.post('/counter-dec', controllerTA04.decCounter);
+
+router.post('/reset', controllerTA04.resetSession);
 
 module.exports = router;

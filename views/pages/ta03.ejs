@@ -3,6 +3,7 @@
 
 <head>
   <% include ../includes/header.ejs %>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/ta03.css" />
 </head>
 
 <body>
@@ -12,11 +13,31 @@
         <h1>
           <%= title %>
         </h1>
-        <p>This is the placeholder for Team Activity 03</p>
+        <p>Product Shop</p>
       </div>
     </div>
-    <div class="container">
-
+    <div class="content">
+      <form action="/ta03" method="POST" class="search-form">
+        <input type="text" name="query" placeholder="Search Products">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div class="grid-container">
+        <% for (let prod of prodsObj) { %>
+          <div class="product">
+            <h1><%= prod.name %></h1>
+            <img src="<%= prod.imageUrl %>" alt="<%= prod.name %>">
+            <div class="prod-body">
+              <h2>$<%= prod.price %></h2>
+              <p><%= prod.description %></p>
+              <ul class="tag-list">
+                <% for (let tag of prod.tags) { %>
+                  <li class="tag"><%= tag %></li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+        <% } %>
+      </div>
     </div>
 
 

@@ -3,21 +3,45 @@
 
 <head>
   <% include ../includes/header.ejs %>
+  <% if(lightMode) { %>
+  <link rel="stylesheet" href="/stylesheets/light.css">
+  <% } else { %>
+  <link rel="stylesheet" href="/stylesheets/dark.css">
+  <% } %>
+  <link rel="stylesheet" href="/stylesheets/ta04.css">
 </head>
 
 <body>
   <% include ../includes/nav.ejs %>
-    <div class="jumbotron text-center">
-      <div class="container">
-        <h1>
-          <%= title %>
-        </h1>
-        <p>This is the placeholder for Team Activity 04</p>
-      </div>
-    </div>
+  <div class="jumbotron text-center">
     <div class="container">
-
+      <form action="/ta04/change-style" method="POST" class="style-form">
+        <% if(lightMode) { %>
+        <button class="btn" type="submit">Dark Mode</button>
+        <% } else { %>
+        <button class="btn" type="submit">Light Mode</button>
+        <% } %>
+      </form>
+      <h1>
+        <%= title %>
+      </h1>
+      <p>Session Variables: Style & Counter</p>
     </div>
+  </div>
+  <div class="container">
+    <div class="counter-container">
+      <h2 class="counter">Counter: <%= counter %></h2>
+      <form action="/ta04/counter-dec" method="POST">
+        <button class="btn" type="submit">Decrement</button>
+      </form>
+      <form action="/ta04/counter-inc" method="POST">
+        <button class="btn" type="submit">Increment</button>
+      </form>
+    </div>
+    <form action="/ta04/reset" method="POST">
+      <button class="btn" type="submit">Reset Session</button>
+    </form>
+  </div>
 
 
 </body>

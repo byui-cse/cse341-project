@@ -1,0 +1,17 @@
+.style-form {
+  position: absolute;
+  right: 5vw;
+}
+
+.counter-container {
+  display: grid;
+  width: 250px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  row-gap: 20px;
+}
+
+.counter {
+  grid-column: 1/-1;
+}

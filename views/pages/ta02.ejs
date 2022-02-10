@@ -2,37 +2,44 @@
 <html>
 
 <head>
-    <% include ../includes/header.ejs %>
+  <% include ../includes/header.ejs %>
 </head>
 
 <body>
-    <% include ../includes/nav.ejs %>
-        <div class="jumbotron text-center">
-            <div class="container">
-                <h1>
-                    <%= title %>
-                </h1>
-            </div>
-        </div>
-        <div class="container">
-            <ul>
-                <% for (let user of users) {%>
-                    <li>
-                        <%= user.name %>
-                    </li>
-                    <% } %>
-            </ul>
-            <form method="POST" action="/ta02/addUser">
-                <label>Enter Username</label>
-                <input type="text" name="userName">
-                <button type="submit">Submit</button>
-            </form>
-            <form method="POST" action="/ta02/removeUser">
-                <label>Remove Username</label>
-                <input type="text" name="remove">
-                <button type="submit">Remove</button>
-            </form>
-        </div>
+  <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <p>This is the placeholder for Team Activity 02</p>
+      </div>
+    </div>
+    <div class="container">
+      <%  if (error.display) {%>
+        <p style="color: red; border: solid 2px red; padding: 5px; width: fit-content;">Error: <%= error.message%></p>
+        <br>
+      <% } %>
+      <form action="/ta02/addUser" method="POST">
+        <label for="username">Create User</label>
+        <input type="text" name="username" placeholder="username">
+        <button type="submit">Create User</button>
+      </form>
+      <br>
+      <form action="/ta02/removeUser" method="POST">
+        <label for="username">Remove User</label>
+        <input type="text" name="removeName" placeholder="username">
+        <button type="submit">Remove User</button>
+      </form>
+      <div>
+        <h2>Users</h2>
+        <ul>
+          <% for(let user of users) {%>
+            <li><%= user.name %></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
 
 
 </body>
